@@ -875,7 +875,17 @@
                
             </div>
             <div class="mt-16">
-                @dd($characters))
+                {{-- @dd($characters) --}}
+                @foreach($characters as $character)
+                <div class="p-4 border rounded shadow">
+                    <h2 class="text-lg font-semibold">{{ $character['name'] }}</h2>
+                    <p>Status: {{ $character['status'] }}</p>
+                    <p>Species: {{ $character['species'] }}</p>
+                    <p>Gender: {{ $character['gender'] }}</p>
+                    <!-- You can add more information here as needed -->
+                    {{-- <img src="{{ $character['image'] }}" alt="{{ $character['name'] }}" class="mt-2 rounded"> --}}
+                </div>
+            @endforeach
             </div>
 
             <div class="mt-16">

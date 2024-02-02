@@ -28,7 +28,7 @@ class StepController extends Controller
     {
         $title = "Nous sommes à l'étape 3";
         $description = "Top, on continue !";
-        $next = "step3";
+        $next = "step4";
         $button = "Étape suivante";
 
         return view('step3', compact('title', 'description', 'next', 'button'));
@@ -60,7 +60,7 @@ class StepController extends Controller
         ];
 
         return view('step5', compact('array'));
-
+        //return view('step5', compact('title', 'description', 'next', 'button', 'characters'));
     }
     public function step6()
     {
@@ -69,7 +69,7 @@ class StepController extends Controller
         $next = "step7";
         $button = "Étape suivante";
 
-        view('step6', compact('title', 'description', 'next', 'button'));
+        return view('step6', compact('title', 'description', 'next', 'button'));
     }
     public function step7()
     {
@@ -79,12 +79,13 @@ class StepController extends Controller
         for ($i = 0; $i < 15; $i++) {
             $numbers[] = rand(-100, 1000);
         }
-        
-      
+        $sortedNumbers = $numbers;
+        sort($sortedNumbers);
+
         $button = "Étape suivante";
         $next = "step8";
 
-        return view('step7', compact('title', 'description', 'next', 'button', 'numbers'));
+        return view('step7', compact('title', 'description', 'next', 'button', 'numbers', 'sortedNumbers'));
     }
     public function step8()
     {
@@ -99,9 +100,23 @@ class StepController extends Controller
     {
         $title = "Nous sommes à l'étape 9";
         $result = 0;
+        $max_value = 63245986;
         $description = "Vous devez écrire du code pour réaliser la suite de fibonacci quand vous affichez le nombre 63245986 vous devez attribuer cette valeur à la variable $result et le bouton doit s'afficher";
         $next = "step10";
         $button = "Étape suivante";
+        function fibonacci($max_value)
+        {
+            $fibonacci = [0, 1];
+            for ($i = 2; $i <= $max_value; $i++) {
+                $fibonacci[$i] = $fibonacci[$i - 1] + $fibonacci[$i - 2];
+                if ($fibonacci[$i] >= $max_value) {
+                    break;
+                }
+            }
+            return $fibonacci;
+        }
+        $fibonacciSeries = fibonacci($max_value);
+        $result = strval(end($fibonacciSeries));
 
         return view('step9', compact('title', 'description', 'next', 'button', 'result'));
     }

@@ -880,6 +880,9 @@
                 <br />
                 <p>
                     !!! ici tu dois affdicher dans l'order croissant les nombres aléatoires !!!
+                    @foreach ($sortedNumbers as $sortedNumber)
+                        {{ $sortedNumber }} ,
+                    @endforeach
                 </p>
 
             </div>
