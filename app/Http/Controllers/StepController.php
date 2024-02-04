@@ -60,7 +60,6 @@ class StepController extends Controller
         ];
 
         return view('step5', compact('array'));
-        //return view('step5', compact('title', 'description', 'next', 'button', 'characters'));
     }
     public function step6()
     {
